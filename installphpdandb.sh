@@ -19,7 +19,7 @@ while true; do
     echo -e "3) Uninstall phpMyAdmin"
     echo -e "4) Exit"
     read -p "Pilihan Anda: " choice
-
+    
     case $choice in
         1)
             clear
@@ -118,12 +118,13 @@ EOT
             clear
             read -p "Masukkan DB username: " dbuser
             read -p "Masukkan DB IP: " dbip
-            read -p "Masukkan DB password: " dbpassword
+            read -sp "Masukkan DB password: " dbpassword
+            echo ""
             read -p "Apakah Anda yakin ingin membuat database? (y/n): " confirm
             if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
                 mysql -u root -p -e "CREATE USER '$dbuser'@'$dbip' IDENTIFIED BY '$dbpassword'; GRANT ALL PRIVILEGES ON *.* TO '$dbuser'@'$dbip' WITH GRANT OPTION;"
                 clear
-                echo -e "${GREEN}DATABASE SUDAH DI BUAT BY FAJAR OFFC YAITU ${NC}"
+                echo -e "${GREEN}DATABASE SUDAH DI BUAT BY FAJAR OFFC ${NC}"
             fi
             ;;
         3)
